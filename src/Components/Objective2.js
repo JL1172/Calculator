@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const StyledDiv = styled.div`
 display : flex;
-flex-direction : row;
+flex-direction : column;
 height : 100vh;
 justify-content : center;
 align-items : center;
@@ -55,10 +55,10 @@ section {
         flex-basis : 20px;
         flex-grow : 2;
         div {
-            margin-top : .5rem;
             height : 28px;  
             border-bottom : 2px solid black;
             text-align : center;
+            cursor : pointer;
             &:active {
                 background-color : royalblue;
             }
@@ -78,23 +78,48 @@ section {
     }
 }
 `
+const Second = styled.div`
+border : 2px solid black;
+div {
+    display : flex;
+    flex-direction : row;
+    flex-wrap : wrap;
+    max-width : 90px;
+    display : flex;
+    flex-direction  :row;
+    div {
+        p {
+            display :block;
+            
+        }
+        
+}
+}
+img {
+    width : 20px;
+}
+`
+const up = "https://cdn0.iconfinder.com/data/icons/leading-international-corporate-website-app-collec/16/Collaps_accordion-512.png";
+const down = "https://cdn0.iconfinder.com/data/icons/leading-international-corporate-website-app-collec/16/Expand_menu-512.png";
 
 class Objective2 extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             nums: this.props.nums,
-            selected:[],
-            first : 1,
+            selected: [],
+            first: 1,
             outcome: 0,
             resultingFunc: "",
-            valueForFunc : "",
+            valueForFunc: "",
             error: false,
-            errorForFunction : false,
+            errorForFunction: false,
+            history : [],
+            visible : false,
         }
     }
     addNum = (integer, integer2) => {
-        
+
         let sum = +integer + +integer2;
         return sum;
     }
@@ -115,27 +140,34 @@ class Objective2 extends React.Component {
         return Math.pow(+integer, 1 / +integer2)
     }
     select = (num) => {
-             this.setState({ ...this.state, selected: [...this.state.selected, num]})
-        }
+        this.setState({ ...this.state, selected: [...this.state.selected, num] })
+    }
 
-    final = (func,value) => {
-                let [...array] = this.state.selected;
-                let joined = array.join("")
-                let numa = +joined
-              this.setState({ ...this.state, resultingFunc: func, valueForFunc : value,selected : [], first : joined}) }
+    final = (func, value) => {
+        if (this.state.selected.length > 0) {
+            let [...array] = this.state.selected;
+            let joined = array.join("")
+            let numa = +joined
+            return this.setState({ ...this.state, errorForFunction : false, resultingFunc: func, valueForFunc: value,
+                 selected: [], first: joined, history : [...this.state.history,numa,value] })
+        } else {
+            this.setState({...this.state, errorForFunction : true})
+        }
+    }
     enter = () => {
         if (this.state.selected.length === 0 && this.state.resultingFunc.length === 0) {
             this.setState({ ...this.state, error: !this.state.error })
         } else {
             let array = [...this.state.selected]
             let joined = array.join("");
-            let numa = +joined; 
+            let numa = +joined;
             let result = this.state.resultingFunc(this.state.first, numa)
-            this.setState({ ...this.state, outcome: result, error : false, selected : [],valueForFunc : ""})
+            
+            this.setState({ ...this.state, outcome: result, error: false, selected: [], valueForFunc: "",history : [...this.state.history,numa,"=",result] })
         }
     }
     clear = () => {
-        this.setState({ ...this.state, selected: [], resultingFunc: "", outcome: 0,error : false, errorForFunction : false,valueForFunc : ""})
+        this.setState({ ...this.state, selected: [], resultingFunc: "", outcome: 0, error: false, errorForFunction: false, valueForFunc: "" })
     }
 
     render() {
@@ -143,13 +175,13 @@ class Objective2 extends React.Component {
             <StyledDiv>
                 <section>
                     {this.state.error && <span style={{ color: "red" }}>*Must enter input</span>}
-                    {this.state.errorForFunction && <span style={{ color: "red" }}>*Must enter number then math sign</span>}
+                    {this.state.errorForFunction && <span style={{ color: "red" }}>*Must enter number then math sign, press clear to restart</span>}
                     <form >
                         <header>
-                    <label>Selected : </label> {<span>{this.state.selected.map(n=> n)}</span>}{this.state.valueForFunc}
+                            <label>Selected : </label> {<span>{this.state.selected.map(n => n)}</span>}{this.state.valueForFunc}
                         </header>
                         <header>
-                    <label>Output : </label><span>{this.state.outcome}</span>
+                            <label>Output : </label><span>{this.state.outcome}</span>
                         </header>
                     </form>
                     <div>
@@ -159,17 +191,26 @@ class Objective2 extends React.Component {
                             })}
                         </main>
                         <article>
-                            <div onClick={() => this.final(this.addNum,"+")}>+</div>
-                            <div onClick={() => this.final(this.subNum,"-")} >-</div>
-                            <div onClick={() => this.final(this.multiplyNum,"*")} >*</div>
-                            <div onClick={() => this.final(this.divideNum,"/")} >/</div>
-                            <div onClick={() => this.final(this.sqrNum,"squared")} >x^y</div>
-                            <div onClick={() => this.final(this.sqrRootNum,"sqrt")} >Sqrt</div>
+                            <div onClick={() => this.final(this.addNum, "+")}>+</div>
+                            <div onClick={() => this.final(this.subNum, "-")} >-</div>
+                            <div onClick={() => this.final(this.multiplyNum, "*")} >*</div>
+                            <div onClick={() => this.final(this.divideNum, "/")} >/</div>
+                            <div onClick={() => this.final(this.sqrNum, "squared")} >x^y</div>
+                            <div onClick={() => this.final(this.sqrRootNum, "sqrt")} >Sqrt</div>
                         </article>
                     </div>
-                    <button disabled = {this.state.error || this.state.errorForFunction} onClick={this.enter}>enter</button>
+                    <button disabled={this.state.error || this.state.errorForFunction} onClick={this.enter}>enter</button>
                     <button onClick={this.clear}>clear</button>
                 </section>
+                <Second>
+                    <div>
+                        History : 
+                        <select>
+                        {this.state.history.map((n,i)=> {
+                            return <option style = {i % 2 !== 0 ? {color : 'royalblue'} : {color : "black"}} key = {i}>{n}</option>
+                        })}</select>
+                    </div>
+                </Second>
             </StyledDiv>
         )
     }
