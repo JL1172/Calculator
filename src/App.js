@@ -1,25 +1,66 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Objective2 from "./Components/Objective2";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const nums = [
+  {
+    number: 0,
+    id: Date.now()
+  },
+  {
+    number: 1,
+    id: Date.now()
+  },
+  {
+    number: 2,
+    id: Date.now()
+  },
+  {
+    number: 3,
+    id: Date.now()
+  },
+  {
+    number: 4,
+    id: Date.now()
+  },
+  {
+    number: 5,
+    id: Date.now()
+  },
+  {
+    number: 6,
+    id: Date.now()
+  },
+  {
+    number: 7,
+    id: Date.now()
+  },
+  {
+    number: 8,
+    id: Date.now()
+  },
+  {
+    number: 9,
+    id: Date.now()
+  },
+]
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      numbers: nums,
+    }
+  }
+  
+
+  render() {
+    return (
+      <div>
+        <Objective2 nums={this.state.numbers}
+        />
+      </div>
+    );
+  }
 }
 
 export default App;
