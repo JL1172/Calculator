@@ -3,35 +3,7 @@ import Objective2 from "./Components/Objective2";
 
 const nums = [
   {
-    number: 0,
-    id: Date.now()
-  },
-  {
-    number: 1,
-    id: Date.now()
-  },
-  {
-    number: 2,
-    id: Date.now()
-  },
-  {
-    number: 3,
-    id: Date.now()
-  },
-  {
-    number: 4,
-    id: Date.now()
-  },
-  {
-    number: 5,
-    id: Date.now()
-  },
-  {
-    number: 6,
-    id: Date.now()
-  },
-  {
-    number: 7,
+    number: 9,
     id: Date.now()
   },
   {
@@ -39,7 +11,35 @@ const nums = [
     id: Date.now()
   },
   {
-    number: 9,
+    number: 7,
+    id: Date.now()
+  },
+  {
+    number: 6,
+    id: Date.now()
+  },
+  {
+    number: 5,
+    id: Date.now()
+  },
+  {
+    number: 4,
+    id: Date.now()
+  },
+  {
+    number: 3,
+    id: Date.now()
+  },
+  {
+    number: 2,
+    id: Date.now()
+  },
+  {
+    number: 1,
+    id: Date.now()
+  },
+  {
+    number: 0,
     id: Date.now()
   },
 ]
