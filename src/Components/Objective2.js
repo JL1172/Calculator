@@ -7,6 +7,7 @@ flex-direction : column;
 height : 100vh;
 justify-content : center;
 align-items : center;
+background-image : linear-gradient(45deg, white, lightgray, lightslategray);
 form {
     background-color : black;
     border-radius : 5px;
