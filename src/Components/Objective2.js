@@ -212,12 +212,12 @@ class Objective2 extends React.Component {
                     <form >
                         <header>
                        
-                            <label>Selected :  {this.state.error && <span style={{ color: "red" }}>*Must enter input</span>}
+                            <label style={{marginRight : ".5rem"}}>Selected :  {this.state.error && <span style={{ color: "red" }}>*Must enter input</span>}
                     {this.state.errorForFunction && <span style={{ color: "red" }}>*Must enter number then math sign, press clear to restart</span>}
-                                 </label> {<span>{this.state.selected.map(n => n)}</span>}{this.state.valueForFunc}
+                                 </label > {this.state.valueForFunc}{<span >{this.state.selected.map(n => n)}</span>}
                         </header>
                         <header>
-                            <label>Output : </label><span>{this.state.outcome}</span>
+                            <label  style={{marginRight : ".3rem"}} >Output : </label><span>{this.state.outcome}</span>
                         </header>
                     </form>
                     <div>
@@ -229,13 +229,13 @@ class Objective2 extends React.Component {
                         <article>
                             <div onClick={() => this.final(this.addNum, "+")}><img style = {{width : "20px"}} src = 'https://cdn4.iconfinder.com/data/icons/maths-symbol/128/mathematics-01-512.png'/></div>
                             <div onClick={() => this.final(this.subNum, "-")} ><img  style = {{width : "20px"}} src = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Minus_symbol.svg/2048px-Minus_symbol.svg.png"/></div>
-                            <div onClick={() => this.final(this.multiplyNum, "*")} ><img  style = {{width : "20px"}} src = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Multiplication_Sign.svg/2048px-Multiplication_Sign.svg.png"/></div>
+                            <div onClick={() => this.final(this.multiplyNum, "x")} ><img  style = {{width : "20px"}} src = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Multiplication_Sign.svg/2048px-Multiplication_Sign.svg.png"/></div>
                             <div onClick={() => this.final(this.divideNum, "/")} ><img style = {{width : "20px"}} src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Division_Sign.svg/318px-Division_Sign.svg.png'/></div>
-                            <div onClick={() => this.final(this.sqrNum, "squared")} ><img style = {{width : "20px"}} src = 'https://cdn.iconscout.com/icon/premium/png-512-thumb/nth-power-8712369-7160710.png?f=avif&w=256'/></div>
+                            <div onClick={() => this.final(this.sqrNum, "x^y")} ><img style = {{width : "20px"}} src = 'https://cdn.iconscout.com/icon/premium/png-512-thumb/nth-power-8712369-7160710.png?f=avif&w=256'/></div>
                             <div onClick={() => this.final(this.sqrRootNum, "sqrt")} ><img style = {{width : "25px"}} src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Root_x.svg/2048px-Root_x.svg.png"/></div>
                         </article>
                     </div>
-                    <button disabled={this.state.error || this.state.errorForFunction} onClick={this.enter}>enter</button>
+                    <button disabled={this.state.error || this.state.errorForFunction || this.state.outcome} onClick={this.enter}>enter</button>
                     <button onClick={this.clear}>clear</button>
                 </section>
                 <Second>
