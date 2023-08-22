@@ -8,7 +8,9 @@ height : 100vh;
 justify-content : center;
 align-items : center;
 form {
-    border : 2px solid black;
+    background-color : black;
+    border-radius : 5px;
+    color : white;
     display : flex;
     flex-direction : column;
     justify-content : space-around;
@@ -19,27 +21,35 @@ form {
 }
 section {
     border : 2px solid black;
+    outline : 2px solid lightgray;
+    outline-offset : 3px;
+    border-radius : 10px;
     display : flex;
     flex-direction  :column;
-    height : 35%;
+    height : 40%;
     width : 20%;
     main:nth-of-type(1) {
         display : flex;
-        border : 2px solid blue;
+        border : 2px solid lightgray;
         flex-wrap : wrap;
-        width : 88.3%;
+        width : 80%;
         justify-content  :space-between;
     }
     input {
         flex-basis : 100px;
+        border: 2px solid lightcyan; 
         flex-grow : 2;
         display : flex;
         justify-content : center;
         background-color : grey;
         color : white;
-    }
-    div:nth-of-type(even) {
-        background-color : lightslategray;
+        &:hover {
+            background-color : lightgray;
+        }
+        &:active {
+            border-color : gray;
+            color : black; 
+        }
     }
     main:nth-child(1) 
     div:nth-of-type(1) {
@@ -48,23 +58,38 @@ section {
         justify-content : center; 
     }
     article{
-        border : 2px solid black;
+        border : 2px solid gray;
         width : 35px;
         display : flex;
         flex-direction : column;
+        justify-self : center;
         flex-basis : 20px;
         flex-grow : 2;
         div {
-            height : 28px;  
-            border-bottom : 2px solid black;
+            height : 30px;  
+            border-bottom : 2px solid gray;
             text-align : center;
+            align-items :center;
+            justify-content : center;
+            background-color : lightgray;
             cursor : pointer;
-            &:active {
-                background-color : royalblue;
+            &:hover {
+                background-color : whitesmoke;
+            }
+            img {
+                justify-content : center;
+                align-items : center;
             }
         }
         div:nth-of-type(1) {
-            padding-left : .8rem;
+            justify-content : center;
+            height : 30px;
+        }
+        div:nth-of-type(odd) {
+            background-color : lightgray; 
+            &:hover {
+                background-color : whitesmoke;
+            }
         }
     }
     div:nth-of-type(1) {
@@ -75,16 +100,23 @@ section {
     }
     button {
         height : 20%;
+        background-color : whitesmoke;
+        color : black;
+        font-size : larger;
+        &:hover {
+            background-color : lightgray;
+        }
+        &:active {
+            color : dodgerblue;
+        }
     }
 }
 `
 const Second = styled.div`
-border : 2px solid black;
 div {
     display : flex;
     flex-direction : row;
     flex-wrap : wrap;
-    max-width : 90px;
     display : flex;
     flex-direction  :row;
     div {
@@ -92,7 +124,6 @@ div {
             display :block;
             
         }
-        
 }
 }
 img {
@@ -127,6 +158,7 @@ class Objective2 extends React.Component {
         return +integer - +integer2;
     }
     divideNum = (integer, integer2) => {
+        if (integer2 == 0) return "cannot be computed"
         return +integer / +integer2;
     }
     multiplyNum = (integer, integer2) => {
@@ -174,11 +206,14 @@ class Objective2 extends React.Component {
         return (
             <StyledDiv>
                 <section>
-                    {this.state.error && <span style={{ color: "red" }}>*Must enter input</span>}
-                    {this.state.errorForFunction && <span style={{ color: "red" }}>*Must enter number then math sign, press clear to restart</span>}
+                    {/* {this.state.error && <span style={{ color: "red" }}>*Must enter input</span>}
+                    {this.state.errorForFunction && <span style={{ color: "red" }}>*Must enter number then math sign, press clear to restart</span>} */}
                     <form >
                         <header>
-                            <label>Selected : </label> {<span>{this.state.selected.map(n => n)}</span>}{this.state.valueForFunc}
+                       
+                            <label>Selected :  {this.state.error && <span style={{ color: "red" }}>*Must enter input</span>}
+                    {this.state.errorForFunction && <span style={{ color: "red" }}>*Must enter number then math sign, press clear to restart</span>}
+                                 </label> {<span>{this.state.selected.map(n => n)}</span>}{this.state.valueForFunc}
                         </header>
                         <header>
                             <label>Output : </label><span>{this.state.outcome}</span>
@@ -191,12 +226,12 @@ class Objective2 extends React.Component {
                             })}
                         </main>
                         <article>
-                            <div onClick={() => this.final(this.addNum, "+")}>+</div>
-                            <div onClick={() => this.final(this.subNum, "-")} >-</div>
-                            <div onClick={() => this.final(this.multiplyNum, "*")} >*</div>
-                            <div onClick={() => this.final(this.divideNum, "/")} >/</div>
-                            <div onClick={() => this.final(this.sqrNum, "squared")} >x^y</div>
-                            <div onClick={() => this.final(this.sqrRootNum, "sqrt")} >Sqrt</div>
+                            <div onClick={() => this.final(this.addNum, "+")}><img style = {{width : "20px"}} src = 'https://cdn4.iconfinder.com/data/icons/maths-symbol/128/mathematics-01-512.png'/></div>
+                            <div onClick={() => this.final(this.subNum, "-")} ><img  style = {{width : "20px"}} src = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Minus_symbol.svg/2048px-Minus_symbol.svg.png"/></div>
+                            <div onClick={() => this.final(this.multiplyNum, "*")} ><img  style = {{width : "20px"}} src = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Multiplication_Sign.svg/2048px-Multiplication_Sign.svg.png"/></div>
+                            <div onClick={() => this.final(this.divideNum, "/")} ><img style = {{width : "20px"}} src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Division_Sign.svg/318px-Division_Sign.svg.png'/></div>
+                            <div onClick={() => this.final(this.sqrNum, "squared")} ><img style = {{width : "20px"}} src = 'https://cdn.iconscout.com/icon/premium/png-512-thumb/nth-power-8712369-7160710.png?f=avif&w=256'/></div>
+                            <div onClick={() => this.final(this.sqrRootNum, "sqrt")} ><img style = {{width : "25px"}} src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Root_x.svg/2048px-Root_x.svg.png"/></div>
                         </article>
                     </div>
                     <button disabled={this.state.error || this.state.errorForFunction} onClick={this.enter}>enter</button>
@@ -204,8 +239,9 @@ class Objective2 extends React.Component {
                 </section>
                 <Second>
                     <div>
-                        History : 
+
                         <select>
+                            <option>--History--</option>
                         {this.state.history.map((n,i)=> {
                             return <option style = {i % 2 !== 0 ? {color : 'royalblue'} : {color : "black"}} key = {i}>{n}</option>
                         })}</select>
