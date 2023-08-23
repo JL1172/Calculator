@@ -4,10 +4,11 @@ import styled from "styled-components";
 const StyledDiv = styled.div`
 display : flex;
 flex-direction : column;
-height : 100vh;
+height : 100%;
 justify-content : center;
 align-items : center;
 background-image : linear-gradient(45deg, white, lightgray, lightslategray);
+margin-top : 10rem;
 form {
     background-color : black;
     border-radius : 5px;
@@ -23,12 +24,13 @@ form {
 section {
     border : 2px solid black;
     outline : 2px solid lightgray;
+    outline : 2px solid black;
     outline-offset : 3px;
     border-radius : 10px;
     display : flex;
     flex-direction  :column;
     height : 40%;
-    width : 20%;
+    width : 20rem;
     main:nth-of-type(1) {
         display : flex;
         border : 2px solid lightgray;
@@ -101,6 +103,8 @@ section {
     }
     button {
         height : 20%;
+        border : 2px solid black;
+        border-radius : 5px;
         background-color : whitesmoke;
         color : black;
         font-size : larger;
@@ -114,22 +118,26 @@ section {
 }
 `
 const Second = styled.div`
+position : absolute;
+top: 10rem;
+transform : translateX(7rem);
+display : flex;
 div {
     display : flex;
     flex-direction : row;
     flex-wrap : wrap;
-    display : flex;
-    flex-direction  :row;
-    div {
-        p {
-            display :block;
-            
-        }
+
+    select {
+        display : flex;
+        border-radius :5px;
+        color : white;
+        padding : .3rem;
+        appearance : none;
+        background-color : transparent;
+
+    }
 }
-}
-img {
-    width : 20px;
-}
+
 `
 const up = "https://cdn0.iconfinder.com/data/icons/leading-international-corporate-website-app-collec/16/Collaps_accordion-512.png";
 const down = "https://cdn0.iconfinder.com/data/icons/leading-international-corporate-website-app-collec/16/Expand_menu-512.png";
@@ -240,7 +248,6 @@ class Objective2 extends React.Component {
                 </section>
                 <Second>
                     <div>
-
                         <select>
                             <option>--History--</option>
                         {this.state.history.map((n,i)=> {
