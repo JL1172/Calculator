@@ -235,12 +235,12 @@ class Objective2 extends React.Component {
                             })}
                         </main>
                         <article>
-                            <div onClick={() => this.final(this.addNum, "+")}><img style = {{width : "20px"}} src = 'https://cdn4.iconfinder.com/data/icons/maths-symbol/128/mathematics-01-512.png'/></div>
-                            <div onClick={() => this.final(this.subNum, "-")} ><img  style = {{width : "20px"}} src = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Minus_symbol.svg/2048px-Minus_symbol.svg.png"/></div>
-                            <div onClick={() => this.final(this.multiplyNum, "x")} ><img  style = {{width : "20px"}} src = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Multiplication_Sign.svg/2048px-Multiplication_Sign.svg.png"/></div>
-                            <div onClick={() => this.final(this.divideNum, "/")} ><img style = {{width : "20px"}} src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Division_Sign.svg/318px-Division_Sign.svg.png'/></div>
-                            <div onClick={() => this.final(this.sqrNum, "x^y")} ><img style = {{width : "20px"}} src = 'https://cdn.iconscout.com/icon/premium/png-512-thumb/nth-power-8712369-7160710.png?f=avif&w=256'/></div>
-                            <div onClick={() => this.final(this.sqrRootNum, "sqrt")} ><img style = {{width : "25px"}} src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Root_x.svg/2048px-Root_x.svg.png"/></div>
+                            <div onClick={() => this.final(this.addNum, "+")}><img style = {{width : "20px"}} alt = "mathsign" src = 'https://cdn4.iconfinder.com/data/icons/maths-symbol/128/mathematics-01-512.png'/></div>
+                            <div onClick={() => this.final(this.subNum, "-")} ><img  style = {{width : "20px"}} alt = "mathsign" src = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Minus_symbol.svg/2048px-Minus_symbol.svg.png"/></div>
+                            <div onClick={() => this.final(this.multiplyNum, "x")} ><img  style = {{width : "20px"}} alt = "mathsign" src = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Multiplication_Sign.svg/2048px-Multiplication_Sign.svg.png"/></div>
+                            <div onClick={() => this.final(this.divideNum, "/")} ><img style = {{width : "20px"}} alt = "mathsign" src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Division_Sign.svg/318px-Division_Sign.svg.png'/></div>
+                            <div onClick={() => this.final(this.sqrNum, "x^y")} ><img style = {{width : "20px"}} alt = "mathsign" src = 'https://cdn.iconscout.com/icon/premium/png-512-thumb/nth-power-8712369-7160710.png?f=avif&w=256'/></div>
+                            <div onClick={() => this.final(this.sqrRootNum, "sqrt")} ><img style = {{width : "25px"}} alt = "mathsign" src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Root_x.svg/2048px-Root_x.svg.png"/></div>
                         </article>
                     </div>
                     <button disabled={this.state.error || this.state.errorForFunction || !this.state.resultingFunc} onClick={this.enter}>enter</button>
