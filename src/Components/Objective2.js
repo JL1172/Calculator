@@ -120,7 +120,7 @@ section {
 const Second = styled.div`
 position : absolute;
 top: 10rem;
-transform : translateX(7rem);
+transform : translateX(2rem);
 display : flex;
 div {
     display : flex;
@@ -243,7 +243,7 @@ class Objective2 extends React.Component {
                             <div onClick={() => this.final(this.sqrRootNum, "sqrt")} ><img style = {{width : "25px"}} src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Root_x.svg/2048px-Root_x.svg.png"/></div>
                         </article>
                     </div>
-                    <button disabled={this.state.error || this.state.errorForFunction || this.state.outcome} onClick={this.enter}>enter</button>
+                    <button disabled={this.state.error || this.state.errorForFunction || !this.state.resultingFunc} onClick={this.enter}>enter</button>
                     <button onClick={this.clear}>clear</button>
                 </section>
                 <Second>
